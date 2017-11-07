@@ -8,8 +8,8 @@ R1 = Udc/Idc
 %% Aufgabe 6.3.2
 clear; clc; close all
 
-Iout_mean = 6.6; %[A]
-RL = [1:9];
+Iout_mean = 6.6; %[A] fixer Wert
+RL = [1:9]; %[position] nachgestelter Wert
 L = 2*27e-3;
 
 alpha_R = [0, 22.5, 30, 39.4, 42.75, 47.25, 51.75, 56.25, 58.5]; %[°]
@@ -28,6 +28,7 @@ grid on
 %plot(RL, alpha_RL);
 plot(alpha_RL, Uout_mean_RL);
 grid on
+grid minor
 hold off
 
 %% 6.4.1 3-Phasen ungesteuert
@@ -48,4 +49,47 @@ xlabel("Strom out [A]");
 ylabel("Spannung out [V]");
 legend("R-Last", "RL-Last");
 grid on
-grid(gca,'minor')
+grid minor
+
+%% 6.4.2 3-Phasen gesteuert
+clear; clc; close all;
+
+I = 4.8; %konstanter Strom
+
+%eingestellte Werte
+alpha_dt = [0, 0.8, 1.0, 1.4, 1.75, 1.95, 2.00, 1.9, 1.9, 1.9, 1.9]; %[ms]
+
+alpha = (alpha_dt/20)*360;     %stellwinkel Stromrichter
+R_L = [1:11];   %eingestellter Wert um Strom konstant zu halten
+
+% gemessene Werte
+
+
+Udc = [250, 230, 225, 220, 210, 190, 180, 170, 160, 150, 145];
+PowerFactor = [0.922, 0.850, 0.811, 0.757, 0.701, 0.654, 0.644, 0.613, 0.589, 0.562, 0.540]; %von PM3000 abgelesen. PF = lambda
+
+% Plot
+figure(1)
+plot(alpha, Udc);
+
+xlabel("Zündwinkel Alpha [°]");
+ylabel("Spannung out DC [V]");
+grid on
+grid minor
+
+
+figure(2)
+plot(alpha, PowerFactor);
+
+xlabel("Zündwinkel Alpha [°]");
+ylabel("Lambda []");
+grid on
+grid minor
+
+%% 6.4.3
+clear; clc; close all
+ue = 0.5 %[ms], ü Überlapungswinkel
+
+%% 6.4.4
+clear; clc; close all
+
