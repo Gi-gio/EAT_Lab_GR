@@ -19,14 +19,12 @@ alpha_RL = [11.25, 18, 22.5, 33.75, 40.5, 42.75, 45, 47.25, 49.5];
 Uout_mean_RL = [146, 134, 115, 96, 77, 58, 48, 40, 30];
 
 hold on
-%plot(RL, Uout_mean_R);
-%plot(RL, alpha_R);
 plot(alpha_RL, Uout_mean_R);
-grid on
-
-%plot(RL, Uout_mean_RL);
-%plot(RL, alpha_RL);
 plot(alpha_RL, Uout_mean_RL);
+
+xlabel("Zündwinkel Alpha [°]");
+ylabel("Ausgangsspannung [V]");
+legend("R-Last", "RL-Last");
 grid on
 grid minor
 hold off
